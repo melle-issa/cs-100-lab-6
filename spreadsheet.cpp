@@ -14,7 +14,14 @@ void Spreadsheet::set_selection(Select* new_select)
     delete select;
     select = new_select;
 }
-
+void Spreadsheet::print_selection(std::ostream& out)const{
+    for(int i = 0; i < data.size(); i++){
+	for(int j = 0; j < 4; j++){
+	    out << data.at(i).at(j) << " ";
+	}
+	out << std::endl;
+    }
+}
 void Spreadsheet::clear()
 {
     column_names.clear();
