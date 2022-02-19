@@ -1,6 +1,7 @@
 #include "spreadsheet.hpp"
 #include "select.hpp"
-
+#include "Select_Contains.hpp"
+#include <vector>
 #include <algorithm>
 #include <iostream>
 
@@ -15,11 +16,22 @@ void Spreadsheet::set_selection(Select* new_select)
     select = new_select;
 }
 void Spreadsheet::print_selection(std::ostream& out)const{
-    for(int i = 0; i < data.size(); i++){
-	for(int j = 0; j < 4; j++){
-	    out << data.at(i).at(j) << " ";
+    if(this->select == nullptr){
+       for(int i = 0; i < data.size(); i++){
+    	    for(int j = 0; j < 4; j++){
+	        out << data.at(i).at(j) << " ";
+	    }
+	    out << std::endl;
+       }
+    }
+    else{
+	for(int i = 0; i < data.size(); i ++){
+	 	if(data.at(i).at(select.column).select(select.SearchValue){
+		    for(int j = 0; j < 4; j++){
+                        out << data.at(i).at(j) << " ";
+                    }
+		}    
 	}
-	out << std::endl;
     }
 }
 void Spreadsheet::clear()

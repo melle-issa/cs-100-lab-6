@@ -26,6 +26,9 @@ public:
     {
         return data.at(row).at(column);
     }
+    std::vector<std::vector<std::string> >getData(){
+	return data;
+    }
 
     void set_selection(Select* new_select);
 
