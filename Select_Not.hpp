@@ -23,7 +23,6 @@ class Select_Not: public Select_Column{
         virtual bool select(const std::string& s) const{
 	    std::size_t result = searchValue.find(s);
 	    if(result == std::string::npos){
-	 //if(searchValue == s){
  	        return true;
 	    }
 	    return false;
