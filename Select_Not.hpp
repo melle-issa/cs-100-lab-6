@@ -15,14 +15,15 @@ class Select_Not: public Select_Column{
 	std::string searchValue;
 	Spreadsheet* searchSheet;
     public:
-	Select_Not(Select_Column *obj):Select_Column(sheet, string1){
-	    column = sheet->get_column_by_name(string1);
-	    searchValue = string2;
-	    searchSheet = sheet;
+	Select_Not(Select_Column *obj):Select_Column(){
+	    column = obj->getCol();
+	   // searchSheet = sheet;
 	}
+        Select_Not():Select_Column(){}
+        
         virtual bool select(const std::string& s) const{
 	    std::size_t result = searchValue.find(s);
-	    if(result == std::string::npos){
+	    if(result != std::string::npos){
  	        return true;
 	    }
 	    return false;

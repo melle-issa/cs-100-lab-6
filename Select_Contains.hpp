@@ -18,12 +18,15 @@ class Select_Contains: public Select_Column{
 	Select_Contains(Spreadsheet* sheet, const std::string string1, const std::string string2):Select_Column(sheet, string1){
 	    column = sheet->get_column_by_name(string1);
 	    searchValue = string2;
-	    searchSheet = sheet;
+	 //   searchSheet = sheet;
 	}
+        Select_Contains():Select_Column(){}
+        std::string getSearchValue(){
+            return searchValue;
+        }
         virtual bool select(const std::string& s) const{
              std::size_t result = s.find(searchValue);
 	     if(result != std::string::npos){
-                // std::cout << std::endl << s << std::endl;
 	         return true;
              }
              else{

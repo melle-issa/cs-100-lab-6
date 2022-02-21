@@ -1,5 +1,6 @@
 #include "spreadsheet.hpp"
 #include "select.hpp"
+#include "Select_Not.hpp"
 #include "Select_Contains.hpp"
 
 #include <iostream>
@@ -25,6 +26,8 @@ int main(int argc, char* argv[])
     sheet.set_selection(new Select_Contains(&sheet,"Last","Dole"));
     sheet.print_selection(std::cout);
     std::cout << std::endl;
+    
+ //   sheet.set_selection(new Select_Not(new Select_Contains(&sheet,"First","v")));
     
     // Sample usage 2
     // sheet.set_selection(

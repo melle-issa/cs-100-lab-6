@@ -28,7 +28,10 @@ public:
     {
         column = sheet->get_column_by_name(name);
     }
-
+    Select_Column(){}
+    int getCol(){
+        return column;
+    }
     virtual bool select(const Spreadsheet* sheet, int row) const
     {
         return select(sheet->cell_data(row, column));
