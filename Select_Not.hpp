@@ -21,11 +21,12 @@ class Select_Not: public Select_Column{
 	    searchSheet = sheet;
 	}
         virtual bool select(const std::string& s) const{
-	    if(row.at(column).find(s) != std::npos){
-		return true;
+	    std::size_t result = searchValue.find(s);
+	    if(result == std::string::npos){
+	 //if(searchValue == s){
+ 	        return true;
 	    }
-	    
-	}
+	    return false;
 };
 
 #endif
