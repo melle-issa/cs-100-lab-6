@@ -21,10 +21,9 @@ class Select_Contains: public Select_Column{
 	    searchSheet = sheet;
 	}
         virtual bool select(const std::string& s) const{
-	    if(row.at(column).find(s) != std:npos){
-		return true;
-	    }
-	    
+          if(s == searchValue){
+	      return true;
+          }
 	}
 };
 
