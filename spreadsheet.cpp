@@ -24,16 +24,18 @@ void Spreadsheet::print_selection(std::ostream& out)const{
 	    out << std::endl;
        }
     }
-    else{
-	for(int i = 0; i < data.size(); i ++){
-	 	if(data.at(i).at(select.column).select(select.SearchValue){
-		    for(int j = 0; j < 4; j++){
-                        out << data.at(i).at(j) << " ";
-                    }
-		}    
-	}
+    else if (this->select != nullptr){
+	for(int i = 0; i < data.size(); i++){
+            if(select->select(this,i)){
+                for(int j = 0; j < 4; j++){
+                    out << data.at(i).at(j) << " ";
+                }
+            out << std::endl;
+            }
+        }    
     }
 }
+
 void Spreadsheet::clear()
 {
     column_names.clear();
