@@ -26,7 +26,7 @@ void Spreadsheet::print_selection(std::ostream& out)const{
     }
     else if (this->select != nullptr){
 	for(int i = 0; i < data.size(); i++){
-            if(select->select(this,i)){
+            if(select->select(this,i) == true){
                 for(int j = 0; j < 4; j++){
                     out << data.at(i).at(j) << " ";
                 }

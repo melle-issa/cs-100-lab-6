@@ -21,13 +21,16 @@ class Select_Contains: public Select_Column{
 	    searchSheet = sheet;
 	}
         virtual bool select(const std::string& s) const{
-         std::size_t result = searchValue.find(s);
-	 if(result != std::string::npos){
-	 //if(searchValue == s){
-	      return true;
-          }
-	  return false;
-	}
+             std::size_t result = s.find(searchValue);
+	     if(result != std::string::npos){
+                // std::cout << std::endl << s << std::endl;
+	         return true;
+             }
+             else{
+	         return false;
+             }        	
+        }
+
 };
 
 #endif
