@@ -14,9 +14,9 @@ class Select_Contains: public Select_Column{
 	int column;
 	std::string columnName;
 	std::string searchValue;
-	Spreadsheet* searchSheet;
+	const Spreadsheet* searchSheet;
     public:
-	Select_Contains(Spreadsheet* sheet, const std::string string1, const std::string string2):Select_Column(sheet, string1){
+	Select_Contains(const Spreadsheet* sheet, const std::string string1, const std::string string2):Select_Column(sheet, string1){
 	    column = sheet->get_column_by_name(string1);
 	    searchValue = string2;
 	    searchSheet = sheet;
@@ -33,9 +33,6 @@ class Select_Contains: public Select_Column{
         }
 	std::string getSearchVal(){
 	    return searchValue;
-	}
-	Spreadsheet* getSpreadsheet(){
-	    return searchSheet;
 	}
 	std::string getColumnName(){
 	    return columnName;
