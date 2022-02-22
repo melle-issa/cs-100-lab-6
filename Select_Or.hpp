@@ -26,17 +26,6 @@ class Select_Or: public Select{
                return true;
            }
         }
-
-/*	virtual bool select(const std::string& s)const{
-	    std::size_t result1 = s.find(searchValue1);
-	    std::size_t result2 = s.find(searchValue2);
-	    //std::cout << searchValue1 << " " << searchValue2 << std::endl;
-	    if(result1 != std::string::npos || result2 != std::string::npos){
-		return true;
-	    }
-	    return false;
-	}
-*/
 };
 
 #endif
