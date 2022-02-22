@@ -10,23 +10,24 @@
 #include <string>
 #include "Select_Contains.hpp"
 
-class Select_Or: public Select_Contains{
+class Select_Or: public Select{
     protected:
-	//int column1;
-	//int column2;
-	std::string searchValue1;
-	std::string searchValue2;
-	Spreadsheet *searchSheet1;
-	Spreadsheet *searchSheet2;
+        Select *obj1;
+        Select *obj2;	
     public:
-	Select_Or(Select_Contains *obj1, Select_Contains *obj2):Select_Contains(obj1->getSheet(), obj1->getColumnName(), obj1->getSearchVal()){
-	    Select_Contains *testContains = new Select_Contains(obj2->getSheet(), obj2->getColumnName(), obj2->getSearchVal());
-	    searchValue1 = obj1->getSearchVal();
-	    searchValue2 = obj2->getSearchVal();
-	   // std::cout << obj1->getColumnName() << " " << obj2->getColumnName() << std::endl;	
-	//std::cout << testContains->getSearchVal() << std::endl;	   
+	Select_Or(Select *arg1, Select *arg2){
+            obj1 = arg1;
+            obj2 = arg2;
 	}
-	virtual bool select(const std::string& s)const{
+        virtual bool select(const Spreadsheet *sheet, int row) const{
+           bool find1 = obj1->select(sheet,row);
+           bool find2 = obj2->select(sheet,row);
+           if(find1 == true || find2 == true){
+               return true;
+           }
+        }
+
+/*	virtual bool select(const std::string& s)const{
 	    std::size_t result1 = s.find(searchValue1);
 	    std::size_t result2 = s.find(searchValue2);
 	    //std::cout << searchValue1 << " " << searchValue2 << std::endl;
@@ -35,7 +36,7 @@ class Select_Or: public Select_Contains{
 	    }
 	    return false;
 	}
-
+*/
 };
 
 #endif
