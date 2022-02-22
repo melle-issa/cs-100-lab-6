@@ -23,10 +23,20 @@ class Select_Column: public Select
 {
 protected:
     int column;
+   const  Spreadsheet *testSheet;
+    std::string columnName;
 public:
     Select_Column(const Spreadsheet* sheet, const std::string& name)
     {
         column = sheet->get_column_by_name(name);
+	columnName = name;
+	testSheet = sheet;
+    }
+    const Spreadsheet* getSheet(){
+	return testSheet;
+    }
+    std::string getColumnName(){
+	return columnName;
     }
 
     virtual bool select(const Spreadsheet* sheet, int row) const
