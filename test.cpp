@@ -5,17 +5,20 @@
 #include <algorithm>
 #include <iostream>
 #include "gtest/gtest.h"
+#include <sstream>
 using namespace std;
 
 TEST(SelectContains, containsAddedVal){
     Spreadsheet testSheet;
-    testSheet.set_column_names({"Name","Age","City","Job"});
-    testSheet.add_row({"George","26","Riverside","Teacher"});
-    testSheet.add_row({"Percy","26","Seattle","President"});
-    testSheet.add_row({"Amelia","26","New York City","Lawyer"});
-    testSheet.set_selection(new Select_Contains(&testSheet,"Age","26"));
-    testSheet.print_selection(std::cout);
-    EXPECT_EQ(testSheet.getData().at(0).at(0), "George");
+    testSheet.set_column_names({"Name","Age","City"});
+    testSheet.add_row({"George","26","Riverside"});
+    testSheet.add_row({"Percy","26","Seattle"});
+    testSheet.add_row({"Amelia","26","New York City"});
+    testSheet.set_selection(new Select_Contains(&testSheet,"Name","George"));
+    std::stringstream output;
+    testSheet.print_selection(output);
+    EXPECT_EQ(output.str(), "George 26 Riverside \n");
+ 
 }
 
 int main(int argc, char **argv) {

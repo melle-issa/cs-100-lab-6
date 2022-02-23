@@ -2,7 +2,8 @@
 #include "select.hpp"
 #include "Select_Contains.hpp"
 #include "Select_Or.hpp"
-
+#include "Select_And.hpp"
+#include "Select_Not.hpp"
 #include <iostream>
 
 int main(int argc, char* argv[])
@@ -28,11 +29,11 @@ int main(int argc, char* argv[])
     std::cout << std::endl;
     
     // Sample usage 2
-    // sheet.set_selection(
-    //     new Select_And(
-    //         new Select_Contains(&sheet,"Last","Dole"),
-    //         new Select_Not(
-    //             new Select_Contains(&sheet,"First","v"))));
+    sheet.set_selection(
+         new Select_And(
+             new Select_Contains(&sheet,"Last","Dole"),
+             new Select_Not(
+                 new Select_Contains(&sheet,"First","v"))));
     
     sheet.print_selection(std::cout);
     std::cout << std::endl;
