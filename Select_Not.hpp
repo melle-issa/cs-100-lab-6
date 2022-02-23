@@ -17,6 +17,9 @@ class Select_Not: public Select{
 	Select_Not(Select *arg1){
 	    obj1 = arg1;
 	}
+        ~Select_Not(){
+            delete obj1;
+        }
         virtual bool select(const Spreadsheet *sheet, int row) const{
 	    bool find = obj1->select(sheet,row);
             if(find == true){ // if it was found, we dont want it printed

@@ -19,6 +19,10 @@ class Select_Or: public Select{
             obj1 = arg1;
             obj2 = arg2;
 	}
+        ~Select_Or(){
+            delete obj1;
+            delete obj2;
+        }
         virtual bool select(const Spreadsheet *sheet, int row) const{
            bool find1 = obj1->select(sheet,row);
            bool find2 = obj2->select(sheet,row);
