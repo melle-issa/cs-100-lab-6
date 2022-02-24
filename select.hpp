@@ -46,6 +46,9 @@ public:
     {
         return select(sheet->cell_data(row, column));
     }
+    int getColumn(){
+	return column;
+    }
 
     // Derived classes can instead implement this simpler interface.
     virtual bool select(const std::string& s) const = 0;

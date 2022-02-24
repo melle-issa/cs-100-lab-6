@@ -19,7 +19,7 @@ class Select_Contains: public Select_Column{
         ~Select_Contains(){   }
         virtual bool select(const std::string& s) const{
              std::size_t result = s.find(searchValue);
-	     if(result != std::string::npos){
+	     if(result != std::string::npos || searchValue == ""){
 	         return true;
              }
              else{

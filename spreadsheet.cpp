@@ -16,7 +16,7 @@ void Spreadsheet::set_selection(Select* new_select)
     select = new_select;
 }
 void Spreadsheet::print_selection(std::ostream& out)const{
-    if(this->select == nullptr){
+     if(this->select == nullptr){
        for(int i = 0; i < data.size(); i++){
     	    for(int j = 0; j < data.at(i).size(); j++){
 	        out << data.at(i).at(j) << " ";
@@ -60,5 +60,7 @@ int Spreadsheet::get_column_by_name(const std::string& name) const
     for(int i=0; i<column_names.size(); i++)
         if(column_names.at(i) == name)
             return i;
-    return -1;
+   
+   throw std::invalid_argument("error: does not exist");
+   return -1;
 }

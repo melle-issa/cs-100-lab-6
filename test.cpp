@@ -11,6 +11,8 @@
 #include <sstream>
 using namespace std;
 
+//ask about repeated sheets
+
 TEST(SelectContains, searchForString){
     Spreadsheet testSheet;
     testSheet.set_column_names({"Name","Age","City"});
@@ -119,7 +121,26 @@ TEST(Select_Contains, testLowerCase){
     EXPECT_EQ(output.str(), "George 26 Riverside \n");
 }
 
-TEST(
+TEST(Select_Column, testNewColumn){
+    Spreadsheet testSheet;
+    testSheet.set_column_names({"Name","Age","City"});
+    testSheet.add_row({"George","26","Riverside"});
+    testSheet.add_row({"Percy","26","Seattle"});
+    testSheet.add_row({"Amelia","26","New York City"});
+    EXPECT_THROW(new Select_Contains(&testSheet, "Last Name", "26"), std::invalid_argument);
+}
+
+TEST(Select_Column, testSameColumn){
+    Spreadsheet testSheet;
+    testSheet.set_column_names({"Name","Name","City"});
+    testSheet.add_row({"George","26","Riverside"});
+    testSheet.add_row({"Percy","26","Seattle"});
+    testSheet.add_row({"Amelia","26","New York City"});
+    testSheet.set_selection(new Select_Contains(&testSheet, "Name", "e"));
+    std::stringstream output;
+    testSheet.print_selection(output);
+    EXPECT_EQ(output.str(), "George 26 Riverside \nPercy 26 Seattle \nAmelia 26 New York City \n");
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
