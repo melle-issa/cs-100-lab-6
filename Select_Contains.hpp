@@ -11,20 +11,12 @@
 
 class Select_Contains: public Select_Column{
     protected:
-	int column;
-	std::string columnName;
 	std::string searchValue;
-	const Spreadsheet* searchSheet;
     public:
 	Select_Contains(const Spreadsheet* sheet, const std::string string1, const std::string string2):Select_Column(sheet, string1){
-	    column = sheet->get_column_by_name(string1);
 	    searchValue = string2;
-	    searchSheet = sheet;
-	    columnName = string1;
 	}
-        ~Select_Contains(){
-           
-        }
+        ~Select_Contains(){   }
         virtual bool select(const std::string& s) const{
              std::size_t result = s.find(searchValue);
 	     if(result != std::string::npos){
@@ -34,13 +26,6 @@ class Select_Contains: public Select_Column{
 	         return false;
              }        	
         }
-	std::string getSearchVal(){
-	    return searchValue;
-	}
-	std::string getColumnName(){
-	    return columnName;
-	}
-
 };
 
 #endif

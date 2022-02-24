@@ -18,7 +18,7 @@ void Spreadsheet::set_selection(Select* new_select)
 void Spreadsheet::print_selection(std::ostream& out)const{
     if(this->select == nullptr){
        for(int i = 0; i < data.size(); i++){
-    	    for(int j = 0; j < data.at(i).size(); j++){ //change 4 to a varaible
+    	    for(int j = 0; j < data.at(i).size(); j++){
 	        out << data.at(i).at(j) << " ";
 	    }
 	    out << std::endl;
